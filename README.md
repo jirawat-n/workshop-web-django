@@ -8,8 +8,10 @@
 ## Start Develop
 - `python manage.py makemigrations`
 - `python manage.py migrate`
-- `python manage.py runserver 0.0.0.0:8000`
+- `python manage.py runserver`
 ## init data
-- `python manage.py loaddata fixtdata/Contact.category.json`
-- `python manage.py loaddata fixtdata/shop.product.json`
-- `python manage.py loaddata fixtdata/shop.imageproduct.json`
+- `python manage.py loaddata fixtdata/auth.user.json`
+- `python manage.py loaddata fixtdata/Contact.json`
+- `python manage.py loaddata fixtdata/Category.json`
+- `python manage.py loaddata fixtdata/bookshop.json`
+- `python manage.py loaddata fixtdata/PostImage.json`
