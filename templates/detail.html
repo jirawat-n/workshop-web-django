@@ -1,0 +1,133 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<head>
+  <title>{% block title_page %}Product : {{data.book_name}}{% endblock %}</title>
+  <link rel="stylesheet" href="../static/css/detail.css">
+</head>
+<div class="row" style="margin-top:80px;">
+  <div class="col-md-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'category' data.book_category.pk %}">{{data.book_category}}</a></li>
+        <li class="breadcrumb-item active">{{data.book_name}}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        {% for p in photos %}
+        <li data-target="#carousel-example-1z" data-slide-to="{{ forloop.counter0 }}"
+          class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+        {% endfor %}
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+        {% for p in photos %}
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+          <img class="d-block w-100" src="{{p.images.url}}" alt="First slide">
+        </div>
+        {% endfor %}
+
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <fieldset class="shadow p-3 mb-5 bg-white" style="padding: 15px;">
+      <legend style=" background-color: #63afab; border-radius: 10px;padding-left: 12px;color: white;"
+        class="legendhaed">
+        Description</legend>
+      <div class="row">
+        <div class="col-md-8">
+          <span>Name :</span>
+          <h3>{{data.book_name}}</h3>
+        </div>
+        <div class="col-md-4">
+          <span>ID :</span>
+          <h3>{{data.book_id}}</h3>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <span>Description :</span>
+          <h3>{{data.book_des}}</h3>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <span>Author :</span><br>
+          <span class="badge badge-pill badge-info" style="font-size: 15px;cursor: pointer;">None</span>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <span>Genre :</span><br>
+          <a href="{% url 'category' data.book_category.pk %}" class="badge badge-pill badge-info"
+            style="font-size: 15px;cursor: pointer;">{{data.book_category}}</a>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <span>Create :</span><br>
+          <h3>{{data.book_created}}</h3>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4">
+          <span>Price :</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4">
+          <h3>{{data.book_price}} Bath.</h3>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+<div class="alert alert-secondary col-xl-12 col-lg-12 col-md-12" style="margin-top: 20px;" role="alert">
+  <h3>Recommended</h3>
+</div>
+<div class="row" style="margin-bottom: 70px;">
+  {% for i in rec %}
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="margin-bottom: 10px;">
+    <div class="card">
+      <a href="{% url 'detail' i.pk %}">
+        <img src="{{i.book_img.url}}" width="100%">
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">{{i.book_name}}</h5>
+        <p class="card-text">{{i.book_des}}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}

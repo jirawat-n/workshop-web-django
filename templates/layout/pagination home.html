@@ -1,0 +1,13 @@
+<ul class="pagination" style="justify-content: center;">
+    {% if book.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{book.previous_page_number}}&text_search={{ text_search }}&{{sort}}">Previous</a></li>
+    {% endif %}
+
+    {% for i in book.paginator.page_range %}
+    <li class="page-item {% if book.number == i %}active{% endif %}"><a class="page-link" href="?page={{i}}&text_search={{ text_search }}&{{sort}}">{{i}}</a></li>
+    {% endfor %}
+
+    {% if book.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{book.next_page_number}}&text_search={{ text_search }}&{{sort}}">Next</a></li>
+    {% endif %}
+</ul>

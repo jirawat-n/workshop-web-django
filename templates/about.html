@@ -1,0 +1,60 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+<head>
+    <title>{% block title_page %}About : Book Market Place{% endblock %}</title>
+    <style>
+        .alert {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-body {
+            height: 150px;
+        }
+    </style>
+</head>
+{% block content %}
+<div style="height: 87vh;">
+    <div class="row" style="margin-top: 80px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <fieldset class="shadow p-3 mb-5 bg-white fieldset-ra" style="margin-top: 20px;">
+                <legend class="legendhaed">About</legend>
+                <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <h5>Hello, My name is Jirawat Nuanjun</h5>
+                </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=6LdrzjQbAAAAAIxaIC_yxyTYYGxmCcwrBoZ8yl7o"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script>
+    function onSubmit(token) {
+        console.log(token)
+        $('#input-hidden').val(token)
+        $('#contactform').submit()
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href=" {% static 'css/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- JS -->
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/v4-shims.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- Font Promp -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="../../static/img/favicon/favicon.png" />
+      <!-- CSS Custom -->
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <title>{% block title_page %}Base{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Book Marker Place</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+                        </a>
+                        <ul class="dropdown-menu dropdown-custom" aria-labelledby="navbarDropdown">
+                            <!-- <li><a class="dropdown-item" href="/category/3">Cartoon</a></li> -->
+                            <li><a class="dropdown-item"
+                                    href="{% url 'allcategory'%}?text_search={{ text_search }}&{{sort}}">All
+                                    Category</a></li>
+                            {% for i in category %}
+                            <li><a class="dropdown-item"
+                                    href="{% url 'category' i.pk %}?text_search={{ text_search }}&{{sort}}">{{i.book_id}}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'about' %}">About</a>
+                    </li>
+                </ul>
+                <form class="d-flex" action="{% url 'allcategory' %}">
+                    <input class="form-control me-2 textfield-radius" type="search" name="text_search"
+                        placeholder="Search" aria-label="Search">
+                    <button class="btn  my-2 my-sm-0 button-radious btn-custom" type="submit"><i
+                            class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer class="bg-light text-center" style="width: -webkit-fill-avilable;">
+        <div class="text-center p-3" style="background-color: rgba(184, 216, 213, 255);">
+            <a class="text-dark" href="https://mdbootstrap.com/">Copyright © 2021 Intelligent Bytes Co., Ltd. All Rights
+                Reserved.</a>
+        </div>
+    </footer>
+</body>
+<script src="{% static 'js/js/bootstrap.bundle.min.js' %}"></script>
+
+</html>

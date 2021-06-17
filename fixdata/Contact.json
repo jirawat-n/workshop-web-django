@@ -1,0 +1,1 @@
+[{"model": "market.contact", "pk": 1, "fields": {"first_name": "jirwat", "last_name": "nuanjun", "email": "jirawat@mail.com", "message": "12345"}}, {"model": "market.contact", "pk": 2, "fields": {"first_name": "op", "last_name": "op", "email": "op@mail.com", "message": "12345"}}]

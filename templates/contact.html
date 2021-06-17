@@ -1,0 +1,114 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+<head>
+    <title>{% block title_page %}Contact : Book Market Place{% endblock %}</title>
+    <style>
+        .alert {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-body {
+            height: 150px;
+        }
+    </style>
+</head>
+{% block content %}
+<div style="height: 87vh;">
+    <div class="row" style="margin-top: 80px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb shadow bg-white rounded">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 shadow p-3 mb-5 bg-white rounded">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <form id="contactform" action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" id='input-hidden'>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Contact</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="id_email">First Name:</label>
+                                <input type="text" class="form-control textfield-radius" name="first_name"
+                                    maxlength="254" required id="id_first_name">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="id_subject">Last Name:</label>
+                                <input type="text" class="form-control textfield-radius" name="last_name"
+                                    maxlength="255" required id="last_name">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="id_email">Email:</label>
+                                <input type="email" class="form-control textfield-radius" name="email" maxlength="254"
+                                    required id="id_email">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="id_message">Message:</label>
+                                <textarea name="message" class="form-control textfield-radius" cols="40" rows="10"
+                                    required id="id_message"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <div class="row">
+                            <div class="col-md-9"></div>
+                            <div class="col-md-3">
+                                <button type="submit" class="g-recaptcha btn btn-custom btn-block button-radious"
+                                    data-sitekey="6LdrzjQbAAAAAIxaIC_yxyTYYGxmCcwrBoZ8yl7o" data-callback='onSubmit'
+                                    data-action='submit'><i class="fas fa-paper-plane"></i>&nbsp;Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<script src="https://www.google.com/recaptcha/api.js?render=6LdrzjQbAAAAAIxaIC_yxyTYYGxmCcwrBoZ8yl7o"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script>
+    function onSubmit(token) {
+        console.log(token)
+        $('#input-hidden').val(token)
+        $('#contactform').submit()
+    }
+</script>
+
+
+<!-- {% include 'layout/footer.html' %} -->
+{% endblock %}

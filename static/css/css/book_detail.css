@@ -1,0 +1,32 @@
+.padding-25 {
+    padding: 25px;
+}
+
+.legendhaed {
+    background-color: #63afab;
+    color: white;
+    border-radius: 10px;
+    padding-left: 12px;
+}
+
+fieldset {
+    border-radius: 20px;
+    width: 80%;
+    align-content: center;
+    height: 547px;
+    width: 547px;
+}
+
+.output {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+    margin: .4rem;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
