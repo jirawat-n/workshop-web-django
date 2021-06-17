@@ -3,7 +3,7 @@
     <div class="card shadow p-3 mb-5 bg-white rounded">
         <div class="card-head">
             <a href="{% url 'detail' i.pk %}">
-                <img src="{{i.book_img.url}}" width="100%">
+                <img src="{{i.book_img.url}}" class="fade-in-image" class="fade-" width="100%">
             </a>
         </div>
         <div class="card-body">
@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-6"></div>
                 <div class="col-md-6"> <a href="{% url 'detail' i.book_id %}"
-                        class="btn btn-custom button-radious btn-block">View</a></div>
+                        class="btn btn-custom button-radious btn-block">View&nbsp;<i class="fas fa-chevron-circle-right"></i></a></div>
             </div>
         </div>
     </div>

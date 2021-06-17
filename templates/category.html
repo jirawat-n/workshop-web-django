@@ -25,7 +25,6 @@
 </head>
 
 {% block content %}
-
 <body>
     <div style="height: 95vh;">
         <div class="row" style="margin-top:80px;">
@@ -61,7 +60,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="dropdown">
-                            <button class="btn btn-outline-secondary dropdown-toggle btn-block" type="button"
+                            <button class="btn btn-custom button-radious dropdown-toggle btn-block" type="button"
                                 id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <span class="caret">{{info}}</span>
                             </button>
@@ -69,13 +68,13 @@
                                 <li>
                                     <a class="dropdown-item"
                                         href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=asc">
-                                        <i class="fas fa-sort-amount-up-alt"></i> ราคา : เรียงจากน้อยไปมาก</a>
+                                        <i class="fas fa-sort-amount-up-alt"></i>    Sort : from least to most</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item"
                                         href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=desc">
 
-                                        <i class="fas fa-sort-amount-up"></i>ราคา : เรียงจากมากไปน้อย</a>
+                                        <i class="fas fa-sort-amount-up"></i> Sort : from most to least</a>
                                 </li>
                             </ul>
                         </div>

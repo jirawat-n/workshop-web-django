@@ -3,30 +3,11 @@
 
 <head>
     <title>{% block title_page %}Book Market Place : Home{% endblock %}</title>
-
-    <style>
-        .card {
-            margin-left: auto;
-            margin-right: auto;
-            width: 18rem;
-        }
-
-        .alert {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .mb-5 {
-            margin-bottom: 5px !important;
-        }
-
-        .card-body {
-            height: 150px;
-        }
-    </style>
+    <link rel="stylesheet" href="../static/css/home.css">
 </head>
 
 <body>
+    
     <fieldset class="shadow p-3 mb-5 bg-white fieldset-ra" style="margin-top: 80px;">
         <legend class="legendhaed">
             <h3 style="margin-top: 7px;">All Category</h3>
@@ -36,7 +17,7 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="margin-bottom: 10px;">
                 <div class="card">
                     <a href="{% url 'category' i.pk %}">
-                        <img src="{{i.category_img.url}}" width="100%">
+                        <img src="{{i.category_img.url}}" class="fade-in-image" width="100%">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{i.category_name}}</h5>
@@ -81,6 +62,7 @@
             <p style="margin-top: 10px; color: black">Welcome to Book Market Place</p>
         </div>
     </div>
+
 </body>
 
 {% endblock %}

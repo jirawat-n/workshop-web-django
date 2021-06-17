@@ -107,10 +107,10 @@ def category(request, pk):
     sort = request.GET.get('sort', 'desc')
     if sort == 'desc':
         book = book.order_by('-book_price')
-        info = "ราคา : เรียงจากมากไปน้อย"
+        info = "Sort : from most to least"
     else:
         book = book.order_by('book_price')
-        info = "ราคา : เรียงจากน้อยไปมาก"
+        info = "Sort : from least to most"
 
     paginator = Paginator(book, 4)
     page = request.GET.get('page')
@@ -156,10 +156,10 @@ def all(request):
     sort = request.GET.get('sort', 'desc')
     if sort == 'desc':
         book = book.order_by('-book_price')
-        info = "ราคา : เรียงจากมากไปน้อย"
+        info = "Sort : from most to least"
     else:
         book = book.order_by('book_price')
-        info = "ราคา : เรียงจากน้อยไปมาก"
+        info = "Sort : from least to most"
 
     paginator = Paginator(book, 4)
     page = request.GET.get('page')

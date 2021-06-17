@@ -1,0 +1,107 @@
+.card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 18rem;
+}
+
+.alert {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+
+.card-body {
+    height: 150px;
+}
+
+.fade-in-image {
+    animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
+    -ms-animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+body,
+html,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+}
+section {
+  height: 100vh;
+}
+.tag {
+}
+
+.tag {
+  opacity: 0;
+  transform: translate(0, 10vh);
+  transition: all 1s;
+}
+
+.tag.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+

@@ -41,18 +41,18 @@
                 </div>
                 <div class="col-xl-2">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-block" type="button"
+                        <button class="btn btn-custom button-radious  dropdown-toggle btn-block" type="button"
                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{info}}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item"
                                 href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=asc">
-                                ราคา : เรียงจากน้อยไปมาก
+                                Sort : from least to most
                             </a>
                             <a class="dropdown-item"
                                 href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=desc">
-                                ราคา : เรียงจากมากไปน้อย
+                                Sort : from most to least
                             </a>
                         </div>
                     </div>
