@@ -1,31 +1,37 @@
 .slide {
-    margin-left: auto;
-    margin-right: auto;
-  }
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .alert {
-    margin-left: auto;
-    margin-right: auto;
-  }
+.alert {
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .mb-5 {
-    margin-bottom: 5px !important;
-  }
+.mb-5 {
+  margin-bottom: 5px !important;
+}
 
-  .card-body {
-    height: 150px;
-  }
+.card-body {
+  height: 150px;
+}
 
-  .legendhaed {
-    background-color: #63afab;
-    color: white;
-    border-radius: 10px;
-    padding-left: 12px;
-  }
+.legendhaed {
+  background-color: #63afab;
+  color: white;
+  border-radius: 10px;
+  padding-left: 12px;
+}
 
-  .fieldset {
-    border-radius: 20px;
-    width: 100%;
-    align-content: center;
-    background-color: rgb(247, 247, 247);
-  }
+.fieldset {
+  border-radius: 20px;
+  width: 100%;
+  align-content: center;
+  background-color: rgb(247, 247, 247);
+}
+
+
+.img-show {
+  width: 100%;
+  height: 280px;
+}

@@ -1,12 +1,25 @@
+<style>
+
+</style>
 {% for i in book %}
-<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="margin-bottom: 10px;">
-    <div class="card">
+<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="margin-bottom: 10px;">
+    <div class="card card-ra">
         <a href="{% url 'detail' i.pk %}">
-            <img src="{{i.book_img.url}}" class="fade-in-image" width="100%">
+            <img src="{{i.book_img.url}}" class="fade-in-image img-ra img-rechome" width="100%">
         </a>
         <div class="card-body">
-            <h5 class="card-title">{{i.book_name}}</h5>
-            <p class="card-text">{{i.book_des}}</p>
+            <h5 class="card-title">Name : {{i.book_name}}</h5>
+            <p class="card-text">Description : {{i.book_des}}</p>
+            <p class="card-title">
+                Category : {{i.book_category}}
+            </p>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6"> <a href="{% url 'detail' i.pk %}"
+                        class="btn btn-custom button-radious btn-block">View&nbsp;<i class="fas fa-chevron-circle-right"></i></a></div>
+            </div>
         </div>
     </div>
 </div>

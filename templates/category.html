@@ -34,7 +34,7 @@
             <div class="col-md-10">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a style="text-decoration: none;color: teal;" href="{% url 'home' %}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
                     </ol>
                 </nav>
@@ -43,12 +43,12 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="list-group">
-                    <a href="{% url 'allcategory'%}?text_search={{ text_search }}&{{sort}}"
+                    <a href="{% url 'allcategory'%}?page=&text_search={{ text_search }}&desc"
                         class="list-group-item  list-group-item-action">
                         All Category
                     </a>
                     {% for i in category %}
-                    <a href="{% url 'category' i.pk %}?text_search={{ text_search }}&{{sort}}"
+                    <a href="{% url 'category' i.pk %}?page=&text_search={{ text_search }}&desc"
                         class="list-group-item list-group-item-action">{{i.book_id}}</a>
                     {% endfor %}
                 </div>

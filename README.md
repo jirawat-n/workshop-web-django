@@ -10,8 +10,8 @@
 - `python manage.py migrate`
 - `python manage.py runserver`
 ## init data
-- `python manage.py loaddata fixtdata/auth.user.json`
-- `python manage.py loaddata fixtdata/Contact.json`
-- `python manage.py loaddata fixtdata/Category.json`
-- `python manage.py loaddata fixtdata/bookshop.json`
-- `python manage.py loaddata fixtdata/PostImage.json`
+- `python manage.py loaddata fixdata/auth.user.json`
+- `python manage.py loaddata fixdata/Contact.json`
+- `python manage.py loaddata fixdata/Category.json`
+- `python manage.py loaddata fixdata/bookshop.json`
+- `python manage.py loaddata fixdata/PostImage.json`

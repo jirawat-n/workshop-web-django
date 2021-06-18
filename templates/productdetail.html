@@ -4,6 +4,16 @@
 <head>
     <title>{% block title_page %}Product : {{data.book_name}}{% endblock %}</title>
     <link rel="stylesheet" href="../static/css/detail.css">
+    <style>
+        .badge-custom {
+            background-color: #f69978;
+        }
+
+        .badge-custom:hover {
+            background-color: #e66f44;
+            color: white;
+        }
+    </style>
 </head>
 <div class="row" style="margin-top:80px;">
     <div class="col-md-12">
@@ -71,16 +81,9 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-12">
-                    <span>Author :</span><br>
-                    <span class="badge badge-pill badge-info" style="font-size: 15px;cursor: pointer;">None</span>
-                </div>
-            </div>
-            <br>
-            <div class="row">
                 <div class="col-md-4">
-                    <span>Genre :</span><br>
-                    <a href="{% url 'category' data.book_category.pk %}" class="badge badge-pill badge-info"
+                    <span>Category :</span><br>
+                    <a href="{% url 'category' data.book_category.pk %}" class="badge badge-pill badge-custom"
                         style="font-size: 15px;cursor: pointer;">{{data.book_category}}</a>
                 </div>
             </div>
@@ -109,29 +112,34 @@
         </fieldset>
     </div>
 </div>
-<fieldset class="shadow p-3 mb-5 bg-white fieldset-ra" style="margin-top: 20px;">
-    <legend class="legendhaed">Recommended</legend>
-    <div class="row">
-        {% include 'product/recommend.html' %}
-        <ul class="pagination" style="justify-content: center;margin-top: 20px;">
-            {% if book.has_previous %}
-            <li class="page-item"><a class="page-link"
-                    href="?page={{book.previous_page_number}}&text_search={{ text_search }}&{{sort}}">Previous</a></li>
-            {% endif %}
+<section class="tag green">
+    <fieldset class="shadow p-3 mb-5 bg-white fieldset-ra" style="margin-top: 20px;">
+        <legend class="legendhaed">Recommended</legend>
+        <div class="row">
+            {% include 'product/recommend.html' %}
+            <ul class="pagination" style="justify-content: center;margin-top: 20px;">
+                {% if book.has_previous %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{book.previous_page_number}}&text_search={{ text_search }}&{{sort}}">Previous</a>
+                </li>
+                {% endif %}
 
-            {% for i in book.paginator.page_range %}
-            <li class="page-item {% if book.number == i %}active{% endif %}"><a class="page-link"
-                    href="?page={{i}}&text_search={{ text_search }}&{{sort}}">{{i}}</a></li>
-            {% endfor %}
+                {% for i in book.paginator.page_range %}
+                <li class="page-item {% if book.number == i %}active{% endif %}"><a class="page-link"
+                        href="?page={{i}}&text_search={{ text_search }}&{{sort}}">{{i}}</a></li>
+                {% endfor %}
 
-            {% if book.has_next %}
-            <li class="page-item"><a class="page-link"
-                    href="?page={{book.next_page_number}}&text_search={{ text_search }}&{{sort}}">Next</a></li>
-            {% endif %}
-        </ul>
-</fieldset>
+                {% if book.has_next %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{book.next_page_number}}&text_search={{ text_search }}&{{sort}}">Next</a></li>
+                {% endif %}
+            </ul>
+    </fieldset>
+</section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 {% endblock %}

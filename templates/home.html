@@ -1,57 +1,89 @@
 {% extends 'layout/base.html' %}
+{% load static %}
 {% block content %}
 
 <head>
     <title>{% block title_page %}Book Market Place : Home{% endblock %}</title>
     <link rel="stylesheet" href="../static/css/home.css">
+
 </head>
+<style>
+
+
+</style>
 
 <body>
-    
-    <fieldset class="shadow p-3 mb-5 bg-white fieldset-ra" style="margin-top: 80px;">
-        <legend class="legendhaed">
-            <h3 style="margin-top: 7px;">All Category</h3>
-        </legend>
-        <div class="row">
-            {% for i in categories %}
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="margin-bottom: 10px;">
-                <div class="card">
-                    <a href="{% url 'category' i.pk %}">
-                        <img src="{{i.category_img.url}}" class="fade-in-image" width="100%">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">{{i.category_name}}</h5>
-                        <p class="card-text">{{i.category_detail}}</p>
+    <section class="yellow">
+        <div class="slide-up-fade-in">
+            <div class="row">
+                <img src="{% static 'img/banner/co1.jpg' %}" class="img-banner" alt="Avatar" style="width: 100%;">
+                <div class="overlay">Book Market Place</div>
+            </div>
+        </div>
+    </section>
+    <section class="tag red">
+        <fieldset class="shadow p-3 mb-5 bg-white fieldset-ra">
+            <legend class="legendhaed">
+                <h3 style="margin-top: 7px;">All Category</h3>
+            </legend>
+            <div class="row">
+                {% for i in categories %}
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12" style="margin-bottom: 10px;">
+                    <div class="card card-ra card-show">
+                        <a href="{% url 'category' i.pk %}">
+                            <img src="{{i.category_img.url}}" class="fade-in-image img-ra img-show">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                Category :
+                                <a href="{% url 'category' i.pk %} "
+                                    class="badge badge-pill badge-custom">{{i.category_name}}</a>
+                            </h5>
+                            <p class="card-text">Description : {{i.category_detail}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6"> <a href="{% url 'category' i.pk %}"
+                                        class="btn btn-custom button-radious btn-block">View&nbsp;<i
+                                            class="fas fa-chevron-circle-right"></i></a></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    </fieldset>
-    <fieldset class="shadow p-3 mb-5 bg-white fieldset-ra" style="margin-top: 20px;">
-        <legend class="legendhaed">
-            <h3 style="margin-top: 7px;">Recommended</h3>
-        </legend>
-        <div class="row">
-            {% include 'product/recommend.html' %}
-        </div>
-        <ul class="pagination" style="justify-content: center;margin-top: 20px;">
-            {% if book.has_previous %}
-            <li class="page-item"><a class="page-link"
-                    href="?page={{book.previous_page_number}}&text_search={{ text_search }}&{{sort}}">Previous</a></li>
-            {% endif %}
+        </fieldset>
+    </section>
+    <section class="tag blue">
+        <fieldset class="shadow p-3 mb-5 bg-white fieldset-ra" style="margin-top: 20px;">
+            <legend class="legendhaed">
+                <h3 style="margin-top: 7px;">Recommended</h3>
+            </legend>
+            <div class="row">
+                {% include 'product/recommend.html' %}
+            </div>
+            <ul class="pagination" style="justify-content: center;margin-top: 20px;">
+                {% if book.has_previous %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{book.previous_page_number}}&text_search={{ text_search }}&{{sort}}">Previous</a>
+                </li>
+                {% endif %}
 
-            {% for i in book.paginator.page_range %}
-            <li class="page-item {% if book.number == i %}active{% endif %}"><a class="page-link"
-                    href="?page={{i}}&text_search={{ text_search }}&{{sort}}">{{i}}</a></li>
-            {% endfor %}
+                {% for i in book.paginator.page_range %}
+                <li class="page-item {% if book.number == i %}active{% endif %}"><a class="page-link"
+                        href="?page={{i}}&text_search={{ text_search }}&{{sort}}">{{i}}</a></li>
+                {% endfor %}
 
-            {% if book.has_next %}
-            <li class="page-item"><a class="page-link"
-                    href="?page={{book.next_page_number}}&text_search={{ text_search }}&{{sort}}">Next</a></li>
-            {% endif %}
-        </ul>
-    </fieldset>
+                {% if book.has_next %}
+                <li class="page-item"><a class="page-link"
+                        href="?page={{book.next_page_number}}&text_search={{ text_search }}&{{sort}}">Next</a></li>
+                {% endif %}
+            </ul>
+        </fieldset>
+        <br><br>
+    </section>
+    {% if user.is_authenticated %}
     <div class="callout w3-animate-opacity w3-animate-bottom" id="opacityAlert">
         <div class="callout-header rounded-top"><i class="fas fa-bell"></i>&nbsp;Alert Message&nbsp;
             <span class="badge badge-pill badge-primary">1</span>
@@ -59,10 +91,37 @@
         <button class="btn btn-dark closebtn" onclick="this.parentElement.style.display='none';">
             <i class="fas fa-times w3-animate-top" id="closealert"></i></button>
         <div class="callout-container rounded-bottom">
-            <p style="margin-top: 10px; color: black">Welcome to Book Market Place</p>
+            <p style="margin-top: 10px; color: black">Welcome User : {{user.username}}</p>
         </div>
     </div>
+    {% else %}
+    <div class="callout w3-animate-opacity w3-animate-bottom" id="opacityAlert">
+        <div class="callout-header rounded-top"><i class="fas fa-bell"></i>&nbsp;Alert Message&nbsp;
+            <span class="badge badge-pill badge-primary">1</span>
+        </div>
+        <button class="btn btn-dark closebtn" onclick="this.parentElement.style.display='none';">
+            <i class="fas fa-times w3-animate-top" id="closealert"></i></button>
+        <div class="callout-container rounded-bottom">
+            <p style="margin-top: 10px; color: black">Welcome To Book Market Place</p>
+        </div>
+    </div>
+    {% endif %}
+   
+    <script>
+        $(document).ready(function () {
+            var interval = setInterval(function () {
+                var momentNow = moment();
+                $('#date-part').html(momentNow.format('YYYY MMMM DD') + ' '
+                    + momentNow.format('dddd')
+                        .substring(0, 3).toUpperCase());
+                $('#time-part').html(momentNow.format('H:MM'));
+            }, 100);
 
+            $('#stop-interval').on('click', function () {
+                clearInterval(interval);
+            });
+        });
+    </script>
 </body>
 
 {% endblock %}

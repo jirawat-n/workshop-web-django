@@ -2,6 +2,17 @@
 
 <head>
     <title>{% block title_page %}Category : All Product{% endblock %}</title>
+    <style>
+        .img-ra {
+            border-radius: 20px 20px 20px 20px;
+        }
+
+        .card-ra {
+            border-radius: 20px 20px 20px 20px;
+        }
+
+              
+    </style>
 </head>
 
 {% block content %}
@@ -11,12 +22,13 @@
     <div class="row" style="margin-top:80px;">
         <div class="col-md-2">
             <h3>Category</h3>
-        </div>
+                  </div>
         <div class="col-md-10">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">All category</li>
+                    <li class="breadcrumb-item"><a style="text-decoration: none;color: teal;" href="{% url 'home' %} ">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">All category
+                    </li>
                 </ol>
             </nav>
         </div>
@@ -47,12 +59,12 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item"
-                                href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=asc">
-                                Sort : from least to most
+                                href="{% url 'allcategory' %}?page=1&text_search={{ text_search }}&sort=asc">
+                                <i class="fas fa-sort-amount-up-alt"></i> Sort : from least to most</a>
                             </a>
                             <a class="dropdown-item"
-                                href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=desc">
-                                Sort : from most to least
+                                href="{% url 'allcategory' %}?page=1&text_search={{ text_search }}&sort=desc">
+                                <i class="fas fa-sort-amount-up"></i> Sort : from most to least</a>
                             </a>
                         </div>
                     </div>
@@ -70,8 +82,6 @@
             {% include 'layout/pagination.html' %}
         </div>
     </div>
-
-    <br> <br>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
