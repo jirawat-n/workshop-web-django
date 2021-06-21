@@ -1,12 +1,12 @@
 from django.contrib import admin
-from .models import bookshop, PostImage,Category,Contact,ImageProfile
+from .models import bookshop, PostImage,Category,Contact
 # from .models import bookshop,Category,author,PostImage
 # Register your models here.
 
 
 admin.site.register(Category)
 admin.site.register(Contact)
-admin.site.register(ImageProfile)
+# admin.site.register(ImageProfile)
 
 class PostImageAdmin(admin.StackedInline):
     model = PostImage

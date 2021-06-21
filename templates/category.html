@@ -67,12 +67,12 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                 <li>
                                     <a class="dropdown-item"
-                                        href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=asc">
+                                        href="{% url 'allcategory'  %}?{{cat_id}}&text_search={{ text_search }}&sort=asc">
                                         <i class="fas fa-sort-amount-up-alt"></i>    Sort : from least to most</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item"
-                                        href="{% url 'allcategory' %}?text_search={{ text_search }}&sort=desc">
+                                        href="{% url 'allcategory'  %}?{{cat_id}}&text_search={{ text_search }}&sort=desc">
 
                                         <i class="fas fa-sort-amount-up"></i> Sort : from most to least</a>
                                 </li>

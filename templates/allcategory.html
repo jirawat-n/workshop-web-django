@@ -36,12 +36,12 @@
     <div class="row ">
         <div class="col-md-2">
             <div class="list-group">
-                <a href="{% url 'allcategory' %}?text_search={{ text_search }}&{{sort}}"
+                <a href="{% url 'allcategory' %}?page=&text_search={{ text_search }}&{{sort}}"
                     class="list-group-item  list-group-item-action">
                     All Category
                 </a>
                 {% for i in category %}
-                <a href="{% url 'category' i.pk %}?text_search={{ text_search }}&{{sort}}"
+                <a href="{% url 'category' i.pk %}?page=&text_search={{ text_search }}&{{sort}}"
                     class="list-group-item list-group-item-action">{{i.book_id}}</a>
                 {% endfor %}
             </div>

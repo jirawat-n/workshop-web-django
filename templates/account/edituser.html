@@ -2,7 +2,7 @@
 {% load static %}
 
 <head>
-    <title>{% block title_page %}Profile : {{img.name}}{% endblock %}</title>
+    <title>{% block title_page %}Profile : {{user.username}}{% endblock %}</title>
     <style>
         .alert {
             margin-left: auto;
@@ -51,7 +51,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header">
                                         <h3>Image Profile</h3>
@@ -63,20 +63,20 @@
                                        Image
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-8">
+                            </div> -->
+                            <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="id_email">Username :</label>
                                         <input type="text" class="form-control textfield-radius" name="first_name"
                                             maxlength="254" id="id_first_name" value="{{user.username}}">
                                     </div>
-                                    <div class="col-md-4">
+                                    <!-- <div class="col-md-4">
                                         <label for="id_email">Status:</label>
                                         <input type="email" class="form-control textfield-radius" name="email"
                                             maxlength="254" value="{{user.is_staff}}" id="id_email">
-                                    </div>
-                                    <div class="col-md-4">
+                                    </div> -->
+                                    <div class="col-md-6">
                                         <label for="id_email">Email:</label>
                                         <input type="email" class="form-control textfield-radius" name="email"
                                             maxlength="254" value="{{user.email}}" id="id_email">
@@ -93,6 +93,14 @@
                                         <label for="id_subject">Last Name:</label>
                                         <input type="text" class="form-control textfield-radius" name="last_name"
                                             maxlength="255" value="{{user.last_name}}" id="last_name">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="id_email">Join :</label>
+                                        <input type="text" class="form-control textfield-radius" name="first_name"
+                                            maxlength="254" value="{{user.date_joined}}" id="id_first_name">
                                     </div>
                                 </div>
                             </div>

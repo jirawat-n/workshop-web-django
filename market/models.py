@@ -41,14 +41,14 @@ class PostImage(models.Model):
         return self.post.book_id
 
 
-class ImageProfile(models.Model):
-    name = models.ForeignKey(User,null=True, on_delete=models.CASCADE)
+# class ImageProfile(models.Model):
+#     name = models.ForeignKey(User,null=True, on_delete=models.CASCADE)
 
-    images = models.FileField(
-        upload_to='images/profile', default='images/profile/favicon.png',)
+#     images = models.FileField(
+#         upload_to='images/profile', default='images/profile/favicon.png',)
 
-    def __str__(self):
-        return self.name.username
+#     def __str__(self):
+#         return self.name.username
 
 
 class Contact(models.Model):

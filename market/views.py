@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponse
-from .models import bookshop, PostImage, Category, Contact,ImageProfile
+from .models import bookshop, PostImage, Category, Contact
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from market.forms.contact import ContactForm
@@ -102,12 +102,13 @@ def category(request, pk):
 
     # เรียงตามราคา
     book = book.order_by('book_price').filter(book_active="True")
-    
+
     # แถบ Category ที่ Navbar
     category = Category.objects.all()
     # Title
     title = category.get(pk=pk)
-    print(title.id)
+    cat_id = title.id
+    print(cat_id)
     # Search
     text_search = request.GET.get('text_search', "")
     sort = request.GET.get('sort', 'desc')
@@ -132,6 +133,7 @@ def category(request, pk):
         'text_search': text_search,
         'info': info,
         'title': title,
+        'cat_id': cat_id,
 
     }
     return render(request, 'category.html', context)
@@ -287,7 +289,6 @@ def checklogin(request):
     username = request.POST['username']
     password1 = request.POST['password']
     user = authenticate(username=username, password=password1)
-    print(user)
     if user is not None:
         login(request, user)
         return redirect('home')
@@ -305,10 +306,10 @@ def logout(request):
 @csrf_exempt
 def edit_user(request):
     category = Category.objects.all()
-    img = ImageProfile.objects.get(name = request.user)
+    # img = ImageProfile.objects.get(name = request.user)
     context = {
         'category': category,
-        'img':img,
+        # 'img':img,
     }
     return render(request, 'account/edituser.html', context)
 
