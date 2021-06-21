@@ -14,4 +14,3 @@
 - `python manage.py loaddata fixdata/Contact.json`
 - `python manage.py loaddata fixdata/Category.json`
 - `python manage.py loaddata fixdata/bookshop.json`
-- `python manage.py loaddata fixdata/PostImage.json`
